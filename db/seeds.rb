@@ -1,4 +1,4 @@
-# movie_categories = ["Not-So-Scary", "Scary", "Extremely Scary"]
+# movie_categories = ["not-so-scary", "scary", "extremely scary"]
 # movie_categories.each do |category|
 #   Category.create(
 #     name: category
