@@ -5,32 +5,13 @@
 #   )
 # end
 
-# not_so_scary_movies = CSV.read('not_so_scary.csv')
-# not_so_scary_movies.each do |movie|
+# movies = CSV.read("movies.csv")
+# movies.each do |movie|
 #   Movie.create!(
-#     title: movie[0],
-#     year: movie[1],
-#     description: movie[2],
-#     category_id: 1
-#   )
-# end
-
-# scary_movies = CSV.read('scary.csv')
-# scary_movies.each do |movie|
-#   Movie.create!(
-#     title: movie[0],
-#     year: movie[1],
-#     description: movie[2],
-#     category_id: 2
-#   )
-# end
-
-# extremely_scary_movies = CSV.read('extremely_scary.csv')
-# extremely_scary_movies.each do |movie|
-#   Movie.create!(
-#     title: movie[0],
-#     year: movie[1],
-#     description: movie[2],
-#     category_id: 3
+#     title: movie[1],
+#     year: movie[2],
+#     description: movie[3],
+#     category_id: movie[4],
+#     image: movie[7]
 #   )
 # end
