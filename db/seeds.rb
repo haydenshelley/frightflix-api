@@ -1,3 +1,10 @@
+# movie_categories = ["Not-So-Scary", "Scary", "Extremely Scary"]
+# movie_categories.each do |category|
+#   Category.create(
+#     name: category
+#   )
+# end
+
 # not_so_scary_movies = CSV.read('not_so_scary.csv')
 # not_so_scary_movies.each do |movie|
 #   Movie.create!(
