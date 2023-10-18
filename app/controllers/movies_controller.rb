@@ -24,4 +24,18 @@ class MoviesController < ApplicationController
       render json: { message: "Category not found" }
     end
   end
+
+  def random
+    @category = Category.find_by(name: params[:category_name])
+
+    if @category
+      @movies = @category.movies
+      if @movies.any?
+        @movie = @movies.sample
+        render :show
+      end
+    else
+      render json: { message: "Category not found" }
+    end
+  end
 end
