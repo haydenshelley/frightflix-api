@@ -4,6 +4,24 @@ class MoviesController < ApplicationController
     render :index
   end
 
+  def random_three
+    @movies = []
+    @categories = Category.where(id: [1, 2, 3])
+
+    @categories.each do |category|
+      cat_movies = category.movies
+      if cat_movies.any?
+        @movies << cat_movies.sample
+      end
+    end
+
+    if @movies.any?
+      render :index
+    else
+      render json: { message: "No movies found in the specified categories" }
+    end
+  end
+
   def show
     @movie = Movie.find_by(id: params[:id])
     title = @movie.title.gsub(" ","+")
@@ -38,4 +56,5 @@ class MoviesController < ApplicationController
       render json: { message: "Category not found" }
     end
   end
+
 end
