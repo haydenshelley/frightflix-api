@@ -4,6 +4,20 @@ class MoviesController < ApplicationController
     render :index
   end
 
+  def liked
+    @user = current_user
+    @movies = @user.movies
+    render :index
+  end
+
+  def add_liked
+    UserMovie.create!(
+      user_id: current_user.id,
+      movie_id: params[:movie_id]
+    )
+    render json: {message: "Movie liked"}
+  end
+
   def random_three
     @movies = []
     @categories = Category.where(id: [1, 2, 3])
