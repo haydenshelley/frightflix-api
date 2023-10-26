@@ -18,6 +18,17 @@ class MoviesController < ApplicationController
     render json: {message: "Movie liked"}
   end
 
+  def delete_liked
+    user_movie = current_user.user_movies.find_by(movie_id: params[:id])
+
+    if user_movie
+      user_movie.destroy
+      render json: { message: "Movie unliked" }
+    else
+      render json: { error: "Movie not found in user's liked movies" }, status: :not_found
+    end
+  end
+
   def random_three
     @movies = []
     @categories = Category.where(id: [1, 2, 3])
