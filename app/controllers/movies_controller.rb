@@ -6,8 +6,12 @@ class MoviesController < ApplicationController
 
   def liked
     @user = current_user
-    @movies = @user.movies
-    render :index
+    if @user
+      @movies = @user.movies
+      render :index
+    else
+      render json: { error: 'Not authorized' }, status: :unauthorized
+    end
   end
 
   def add_liked
@@ -19,10 +23,10 @@ class MoviesController < ApplicationController
   end
 
   def delete_liked
-    user_movie = current_user.user_movies.find_by(movie_id: params[:id])
+    @user_movie = UserMovie.find_by(user_id: current_user.id, movie_id: params[:movie_id])
 
-    if user_movie
-      user_movie.destroy
+    if @user_movie
+      @user_movie.destroy
       render json: { message: "Movie unliked" }
     else
       render json: { error: "Movie not found in user's liked movies" }, status: :not_found
