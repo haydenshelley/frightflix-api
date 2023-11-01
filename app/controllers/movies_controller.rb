@@ -54,7 +54,7 @@ class MoviesController < ApplicationController
   def show
     @movie = Movie.find_by(id: params[:id])
     title = @movie.title.gsub(" ","+")
-    api_key = Rails.application.credentials.api_key[:omdb]
+    api_key = Rails.application.credentials.omdb
     response = HTTP.get("https://www.omdbapi.com/?t=#{title}&apikey=#{api_key}")
     render json: response.parse(:json)
   end
