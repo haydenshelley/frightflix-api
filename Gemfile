@@ -78,3 +78,4 @@ gem 'csv'
 gem 'rack-cors'
 gem 'http'
 gem 'seed_dump'
+accelerator
